@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "‐//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http‐equiv="Content‐Type" content="text/html; charset=utf‐8" /> </head>
+
+<body>
+  <h1>Annotate VCF File</h1>
+        <form id="upload_form" action="https://{{ bucket_name }}.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="acl" value="{{ s3_acl }}" />
+            <input type="hidden" name="Content-Type" value="multipart/form-data" />
+            <input type="hidden" name="x-amz-meta-uuid" value="{{ s3_uuid }}" />
+            <input type="hidden" name="x-amz-server-side-encryption" value="AES256" />
+            <input type="hidden"   name="X-Amz-Credential" value="{{ s3_credential }}" />
+            <input type="hidden"   name="X-Amz-Algorithm" value="AWS4-HMAC-SHA256" />
+            <!--<input type="hidden"   name="AWSAccessKeyId" value="AKIAJTA7OPM2ZDOG7DCQ" />-->
+            <input type="hidden"   name="X-Amz-Date" value="{{ s3_date }}" />
+            <input type="hidden"   name="success_action_redirect" value="http://hyoungsun-hw3.ucmpcs.org:5000/annotate/files" />
+            <input type="hidden"  name="key" value="{{ s3_file }}" />
+            <input type="hidden" name="Policy" value='{{ s3_pol }}' />
+            <input type="hidden" name="X-Amz-Signature" value="{{ s3_sig }}" />
+
+          Select input file: <input id="upload_file" type="file" name="file" />
+          <input type="submit" value="Upload Input File" />
+        </form>
+</body>
+
+</html>

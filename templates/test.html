@@ -1,0 +1,9 @@
+<h1>Get Username</h1>
+<form method="post" >
+  Username: <input type="text" name="username" />
+  <input type="submit" value="Submit Username" />
+</form>
+{% if username %}
+<hr />
+<p>It looks like you entered "{{ username }}".</p>
+{% endif %}
